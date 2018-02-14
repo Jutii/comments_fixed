@@ -1,0 +1,20 @@
+
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@idea.picture_url, width: '100%') if @idea.picture.present? %>
+  </div>
+
+  <div class="col-md-3">
+    <p><b>Name: </b><%= @idea.name %></p>
+    <p><b>Description: </b><%= @idea.description %></p>
+    <p>
+      <%= link_to 'Edytuj', edit_idea_path(@idea) %> |
+      <%= link_to 'Usuń', @idea, data: { confirm: 'Are you sure?' }, method: :delete %> |
+      <%= link_to 'Powrót', ideas_path %>
+      <%= render template: "comments/index" %>
+      <%= render template: 'comments/new' %>
+    </p>
+
+
+  </div>
+</div>

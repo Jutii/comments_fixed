@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Komentarze</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nazwa użytkownika</th>
+      <th>Body</th>
+      <th>Idea</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.email %></td>
+        <td><%= comment.body %></td>
+        <td><%= comment.idea_id %></td>
+        <td><%= link_to 'Pokaż', idea_comment_path(@idea, comment) %></td>
+        <td><%= link_to 'Edytuj', edit_idea_comment_path(@idea, comment) %></td>
+        <td><%= link_to 'Usuń', idea_comment_path(@idea, comment), method: :delete, data: { confirm: 'Czy aby na pewno?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nowy komentarz', new_idea_comment_path(@idea) %>
